@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Desafio Framework</string>
+    <string name="title_todos">To Do</string>
+    <string name="title_posts">Posts</string>
+    <string name="title_albums">Albums</string>
+    <string name="to_do_list_title">To-Do List</string>
+    <string name="dialog_button">Reload</string>
+    <string name="todo_title_example">laboriosam mollitia et enim quasi adipisci quia provident illum</string>
+    <string name="todo_id_example">TODO #1</string>
+    <string name="todo_status_example">Completed</string>
+    <string name="todo_status_completed">Completed</string>
+    <string name="todo_status_incompleted">Inompleted</string>
+</resources>
