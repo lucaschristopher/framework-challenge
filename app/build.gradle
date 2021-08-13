@@ -64,16 +64,17 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-//    // Koin
-//    // Koin main features for Android (Scope,ViewModel ...)
-//    implementation "io.insert-koin:koin-android:$koin_version"
-//    // Koin Java Compatibility
-//    implementation "io.insert-koin:koin-android-compat:$koin_version"
-//    // Koin for Jetpack WorkManager
-//    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
-//    // Koin for Jetpack Compose
-//    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+    // Koin
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-android:$koin_version"
     implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    // Tests
+    // JUnit 4 framework
+    testImplementation "junit:junit:$junit_version"
+    // Robolectric environment
+    testImplementation "androidx.test:core:$roboletric_version"
+    // Mockito framework
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+
 }
