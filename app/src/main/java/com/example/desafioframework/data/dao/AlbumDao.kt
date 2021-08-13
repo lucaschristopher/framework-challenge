@@ -1,6 +1,5 @@
 package com.example.desafioframework.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,5 +13,5 @@ interface AlbumDao {
     fun save(albums: List<Album>)
 
     @Query("SELECT * FROM Album")
-    fun getAll(): LiveData<List<Album>>
+    fun getAll(): List<Album>
 }

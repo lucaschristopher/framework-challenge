@@ -1,6 +1,5 @@
 package com.example.desafioframework.data.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,5 +13,5 @@ interface ToDoDao {
     fun save(todos: List<ToDo>)
 
     @Query("SELECT * FROM ToDo")
-    fun getAll(): LiveData<List<ToDo>>
+    fun getAll(): List<ToDo>
 }

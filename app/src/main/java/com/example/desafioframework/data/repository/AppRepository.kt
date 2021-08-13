@@ -9,7 +9,7 @@ interface AppRepository {
 
     suspend fun findAllToDos(): AppState<List<ToDo>>
 
-    suspend fun findAllPosts(): List<Post>
+    suspend fun findAllPosts(): AppState<List<Post>>
 
-    suspend fun findAllAlbums(): List<Album>
+    suspend fun findAllAlbums(): AppState<List<Album>>
 }

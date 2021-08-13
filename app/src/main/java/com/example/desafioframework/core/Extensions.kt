@@ -12,3 +12,8 @@ fun Context.createDialog(block: AlertDialog.Builder.() -> Unit = {}): AlertDialo
     block(builder)
     return builder.create()
 }
+
+// Extension to provides information of internet connection
+fun Context.noNetworkConnectivityError(): AppState.Error {
+    return AppState.Error(Exception(this.resources.getString(R.string.no_network_connectivity)))
+}

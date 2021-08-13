@@ -14,9 +14,9 @@ import com.example.desafioframework.data.model.ToDo
 @Database(entities = [Post::class, Album::class, ToDo::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun todoDao(): ToDoDao
-    abstract fun albumDao(): AlbumDao
-    abstract fun postDao(): PostDao
+    abstract val toDoDao: ToDoDao
+    abstract val postDao: PostDao
+    abstract val albumDao: AlbumDao
 
     companion object {
         // @Volatile indicates that this instance will always work in main memory, never via cache

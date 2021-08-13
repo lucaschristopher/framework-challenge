@@ -5,12 +5,21 @@
     <string name="title_albums">Albums</string>
     <string name="to_do_list_title">To-Do List</string>
     <string name="dialog_button">Reload</string>
+
     <string name="todo_title_example">laboriosam mollitia et enim quasi adipisci quia provident illum</string>
+    <string name="album_title_example">consequatur autem doloribus natus consectetur</string>
+    <string name="post_title_example">qui est esse</string>
+    <string name="post_body_example">est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla</string>
+
     <string name="todo_id_example">TODO #1</string>
+    <string name="post_id_example">POST #1</string>
+    <string name="album_id_example">ALBUM #1</string>
+
     <string name="todo_status_example">Completed</string>
     <string name="todo_status_completed">Completed</string>
     <string name="todo_status_incompleted">Inompleted</string>
     <string name="to_dos_not_found">No to-dos at the moment...</string>
     <string name="common_reload">Reload</string>
     <string name="generic_error_message">Ocorreu um erro, por favor, tente novamente.</string>
+    <string name="no_network_connectivity">Sem conexão com a internet...</string>
 </resources>
