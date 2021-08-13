@@ -6,9 +6,9 @@ import com.example.desafioframework.data.repository.AppRepository
 
 class GetPostsUseCase(
     private val repository: AppRepository
-) : UseCase.NoParam<List<Post>>() {
+) /*: UseCase.NoParam<List<Post>>()*/ {
 
-    override suspend fun execute(): List<Post> {
+    /*override*/ suspend fun execute(): List<Post> {
         return repository.findAllPosts()
     }
 }

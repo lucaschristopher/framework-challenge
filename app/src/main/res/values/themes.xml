@@ -20,4 +20,21 @@
         <item name="android:textSize">50sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="NotFoundItemsTitle">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/not_found_title</item>
+    </style>
+
+    <style name="AlertDialogTitle">
+        <item name="fontFamily">@font/montserrat_medium</item>
+        <item name="android:textSize">@dimen/dialog_title</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
 </resources>

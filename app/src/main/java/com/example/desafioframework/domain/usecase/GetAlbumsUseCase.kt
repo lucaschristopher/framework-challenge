@@ -6,9 +6,9 @@ import com.example.desafioframework.data.repository.AppRepository
 
 class GetAlbumsUseCase(
     private val repository: AppRepository
-) : UseCase.NoParam<List<Album>>() {
+) /*: UseCase.NoParam<List<Album>>()*/ {
 
-    override suspend fun execute(): List<Album> {
+    /*override*/ suspend fun execute(): List<Album> {
         return repository.findAllAlbums()
     }
 }

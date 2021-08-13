@@ -7,7 +7,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 // Extension to create an AlertDialog
 fun Context.createDialog(block: AlertDialog.Builder.() -> Unit = {}): AlertDialog {
-    val builder = AlertDialog.Builder(this)
+    val builder = AlertDialog.Builder(this, R.style.AlertDialogTitle)
     builder.setPositiveButton(R.string.dialog_button, null)
     block(builder)
     return builder.create()

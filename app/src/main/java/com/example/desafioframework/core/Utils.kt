@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.NetworkInfo
 import android.os.Build
+import retrofit2.Response
 
 object Utils {
 
@@ -47,5 +48,16 @@ object Utils {
             }
         }
         return result
+    }
+
+    fun <T : Any> handleApiError(resp: Response<T>): AppState.Error {
+        val error = ApiErrorUtils.parseError(resp)
+        return AppState.Error(Exception(error.message))
+    }
+
+    fun <T : Any> handleSuccess(response: Response<T>): AppState<T> {
+        response.body()?.let {
+            return AppState.Success(it)
+        } ?: return handleApiError(response)
     }
 }

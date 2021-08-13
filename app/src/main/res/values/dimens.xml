@@ -4,4 +4,9 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="default_margin">16dp</dimen>
     <dimen name="small_margin">8dp</dimen>
+    <dimen name="middle_margin">12dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="not_found_title">18sp</dimen>
+    <dimen name="dialog_title">12sp</dimen>
 </resources>

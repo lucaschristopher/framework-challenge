@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.desafioframework.R
 import com.example.desafioframework.core.AppState
 import com.example.desafioframework.core.createDialog
 import com.example.desafioframework.data.model.ToDo
@@ -33,7 +34,8 @@ class ToDoFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setupList()
-        viewModel.init()
+        setupListeners()
+        initViewModel()
         initObservers()
     }
 
@@ -44,20 +46,30 @@ class ToDoFragment : Fragment() {
         }
     }
 
+    private fun setupListeners() {
+        binding.btRefreshTodos.setOnClickListener {
+            refreshTodos()
+        }
+    }
+
+    private fun initViewModel() {
+        showLoading(true)
+        viewModel.init()
+    }
+
     private fun initObservers() {
         viewModel.todoLiveData.observe(this) { state ->
             when (state) {
-                AppState.Loading -> showLoading(true)
                 is AppState.Error -> {
                     context?.createDialog {
-                        setMessage(state.error.message)
+                        setMessage(setupErrorMessage(state.message))
                         setCancelable(false)
-                        setPositiveButton(android.R.string.ok) { _, _ -> viewModel.init() }
+                        setPositiveButton(R.string.common_reload) { _, _ -> refreshTodos() }
                     }?.show()
                     showLoading(false)
                 }
-                is AppState.Success -> {
-                    val response = state.list as List<ToDo>
+                is AppState.Success<*> -> {
+                    val response = state.successData as List<ToDo>
                     toDoListAdapter.submitList(response)
                     setupLayout(response)
                     showLoading(false)
@@ -69,11 +81,28 @@ class ToDoFragment : Fragment() {
     private fun setupLayout(list: List<ToDo>) {
         if (!list.isNullOrEmpty()) {
             binding.rvTodoList.visibility = View.VISIBLE
+            binding.tvTodosNotFound.visibility = View.GONE
+            binding.btRefreshTodos.visibility = View.GONE
+        } else {
+            binding.rvTodoList.visibility = View.GONE
+            binding.tvTodosNotFound.visibility = View.VISIBLE
+            binding.btRefreshTodos.visibility = View.VISIBLE
         }
     }
 
+    private fun refreshTodos() {
+        binding.tvTodosNotFound.visibility = View.GONE
+        binding.btRefreshTodos.visibility = View.GONE
+
+        initViewModel()
+    }
+
     private fun showLoading(isLoading: Boolean) {
-        // TODO: Implements progressBar
+        binding.cpiLoadingTodos.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun setupErrorMessage(apiMessage: String): String {
+        return if (apiMessage.isNullOrEmpty()) getString(R.string.generic_error_message) else apiMessage
     }
 
     override fun onDestroyView() {

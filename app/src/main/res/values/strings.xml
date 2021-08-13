@@ -10,4 +10,7 @@
     <string name="todo_status_example">Completed</string>
     <string name="todo_status_completed">Completed</string>
     <string name="todo_status_incompleted">Inompleted</string>
+    <string name="to_dos_not_found">No to-dos at the moment...</string>
+    <string name="common_reload">Reload</string>
+    <string name="generic_error_message">Ocorreu um erro, por favor, tente novamente.</string>
 </resources>
