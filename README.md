@@ -1,23 +1,27 @@
 # Framework - Desafio Android
 
-O desafio compreenderá a construção de um App que mostra uma lista de partidas de CS:GO 🔫 em um determinado período de tempo utilizando a API do [PandaScore](https://pandascore.co/). Link do Figma para o projeto [aqui](https://www.figma.com/file/OeNVxV2YkHXMgzky8YNQQO/Desafio-CSTV?node-id=0%3A1).
+Construa uma aplicação Android que irá sincronizar as listagens da API Rest para o banco local ao iniciar a aplicação. Esta aplicação deve conter os menus:
+- POSTAGENS
+- ALBUNS
+- TO-DOs
+
+Toda a aplicação funcionando com o banco local sincronizado inicialmente. 
+- A API a ser utilizada está publicada em https://jsonplaceholder.typicode.com/. 
+- Utilizar os guid lines (https://developer.android.com/design/index.html) do Google Material Design para construção das telas.
 
 # A Solução
 
-A aplicação se trata de uma listagem de partidas de CS:GO, além de possui uma tela de detalhes que exibe as informações da partida, como: logos dos times, horário agendado da partida e listagens dos jogadores.
-- A ordem de exibição da listagem está considerando o filtro *"-status"*, o que elva a priorizar as partidas que estão acontecendo ao vivo.
-- Muitos dados não estão disponíveis, estão foi criado um *placeholder* para imagens e campos que a API trouxe como nulos.
+A aplicação se trata de uma simples listagem de postagens, albuns e tarefas, divididas respectivamente em abas. A aplicação consome *endpoints* fornecida pelo *{JSON} Placeholder* e comporta-se da seguinda maneira:
+
+- Caso o usuário esteja conectado à internet, fazer consumo dos endpoints especificados. Caso contrário, consumir a base de dados local.
+- **OBS.:** Para tratamento de erros, adotei uma estratégia de exibir um diálogo em caso de perca de conexão repentina e, em caso de ausência de dados, uma mensagem ao centro da tela informando ao usuário que não possuímos dados no momento, oferecendo a ele a opção de poder solicitar novamente uma chamada ao webservice para verificar se há dados a serem consumidos.
 
 Foi adotada a **[Arquitetura MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)** de acordo com as [recomendações de arquitetura mobile da Google](https://developer.android.com/jetpack/guide) juntamente com a **[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)**. Além disso, foi adotado no projeto as principais bibliotecas do mundo do [Android Jetpack](https://developer.android.com/jetpack) e utilização de demais ferramentas. Seguem abaixo cada uma com a devida justificativa de adoção:
 
 - **[Retrofit:](https://square.github.io/retrofit/)** um cliente HTTP *type-safety* para Android de fácil utilização que fornece um simples padrão de implementação para transmissão de dados entre aplicação/servidor.
-- **[Kotlin Coroutines + Flow:](https://developer.android.com/kotlin/flow)** um tipo que pode emitir vários valores sequencialmente, ao contrário das funções de suspensão, que retornam somente um valor. fluxos são criados com base nas corrotinas e podem fornecer vários valores. Conceitualmente, um fluxo é um stream de dados que pode ser computado de forma assíncrona.
-- **[Coil:](https://coil-kt.github.io/coil/)** trata-se de uma biblioteca de carregamento de imagens para Android apoiada por Kotlin Coroutines.
+- **[Room:](https://developer.android.com/training/data-storage/room)** um banco de dados que oferece uma camada de abstração sobre o SQLite para permitir acesso fluente ao banco de dados e, ao mesmo tempo, aproveitar toda a capacidade do SQLite de forma offline. É altamente recomendável utilizar o Room por sua forma de tratamento dos dados.
+- **[LiveData:](https://developer.android.com/reference/androidx/lifecycle/LiveData?hl=pt-br)** trata-se de uma classe de portador de dados que pode ser observada dentro de um determinado ciclo de vida. Isso significa que um *Observer* pode ser adicionado a um par com um *LifecycleOwner* e esse observador será notificado sobre as modificações dos dados agrupados apenas se o *LifecycleOwner* emparelhado estiver no estado ativo. 
 - **[Koin:](https://insert-koin.io/)** uma biblioteca de injeção de dependências de forma inteligente, de fácil configuração e adoção. O Koin roda em tempo de execução, contudo, não apresenta uma performance ruim. Foi levantada a possível adoção do [Dagger](https://dagger.dev/dev-guide/android.html), contudo, sua configuração é um pouco mais massante e requer maior robustez e atenção. Entre isso e outros fatores, o Koin vem se destacando no mercado e isso foi considerado para a sua implantação na nossa arquitetura.
-- **[Navigation:](https://developer.android.com/guide/navigation)** o componente de navegação do Android Jetpack ajuda você a implementar a navegação, desde simples cliques em botões até padrões mais complexos, como barras de aplicativos e a gaveta de navegação. Esse componente também garante uma experiência do usuário consistente e previsível por meio da adesão a um conjunto de princípios estabelecido.
-- **[Jetpack Compose:](https://developer.android.com/jetpack/compose)** o Jetpack Compose é um kit de ferramentas moderno do Android para criar IUs nativas. Ele simplifica e acelera o desenvolvimento da IU no Android, tornando o código mais simples e fácil de manter (evita codificação de classes e códigos *boilerplates*). Trabalha de forma declarativa, o que acelera o desenvolvimento.
-- **[Paging:](https://developer.android.com/jetpack/compose)** a biblioteca Paging facilita o carregamento gradual e tranquilo de dados na RecyclerView do seu app.  
-- **[Mockk:](https://mockk.io/)** uma biblioteca para simulação escrito e feito para o Kotlin + JUnit 4 (o JUnit 4 expõe uma API baseada em regras para permitir alguma automação após o ciclo de vida do teste).
 
 Por fim, falando um pouco sobre o **MVVM (Model-View-ViewModel)**, temos basicamente a divisão em:
 
@@ -44,4 +48,3 @@ Esta foi a abordagem adotada na solução. Desde já, grato.
 **Autor: Lucas Christopher.**
 
 ##### _All honor and all glory, everything comes from him and everything is for him: JESUS!_
-
